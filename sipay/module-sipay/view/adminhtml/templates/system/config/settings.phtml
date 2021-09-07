@@ -1,0 +1,112 @@
+<?php
+
+/**
+ * Copyright © 2016 Sipay. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+?>
+<link rel="stylesheet" href="<?php echo $block->getCssUrl() ?>">
+<script type="text/javascript" src="<?php echo $block->getSdkUrl() ?>"></script>
+<script src="<?php echo $block->getSdkJsUrl() ?>"></script>
+<div id="pwall-popup">
+</div>
+<script>
+  require([
+    'jquery',
+    'uiRegistry',
+    'Magento_Ui/js/modal/modal',
+    'domReady!'
+  ], function($, uiRegistry, modal) {
+
+    var options = {
+      type: "popup",
+      title: "",
+      responsive: true,
+      autoOpen: true,
+      clickableOverlay: false,
+      focus: "",
+      buttons: [{
+        text: $.mage.__('Cancel'),
+        class: '',
+        click: function() {
+          this.closeModal();
+        }
+      }]
+    };
+    $("#sipay-sipay-alert").hide();
+    $("[id*='sipay_sipay_resource'],[id*='sipay_sipay_secret'],[id*='sipay_sipay_key'],[id*='sipay_sipay_environment']").on("change", function() {
+      $("#sipay-sipay-button").hide();
+      $("#sipay-sipay-alert").show();
+    });
+    $('#launch_settings').on("click", function() {
+      var popup = modal(options, $("#pwall-popup"));
+      // document.dispatchEvent(new Event('payment_wall_load_app'));
+      const client = new PWall('<?php echo $block->getEnvironment() ?>', true);
+      var backoffice = client.backoffice();
+      backoffice.backendUrl("<?php echo $block->getBackendUrl() ?>");
+      backoffice.appendTo("#pwall-popup");
+      backoffice.setTags("fisico");
+      backoffice.init();
+    });
+
+    $("[id*='sipay_osc_sipay_osc_product_page-head']").on("click", function() {
+      closeElement("[id*='sipay_osc_sipay_osc_minicart");
+      closeElement("[id*='sipay_osc_sipay_osc_cart");
+      renderExpressCheckoutConfig(this, "div[id*='sipay_osc_sipay_osc_product_page_sipay_osc_product_page_pwall']", "m2_product_page")
+    });
+    $("[id*='sipay_osc_sipay_osc_minicart-head']").on("click", function() {
+      closeElement("[id*='sipay_osc_sipay_osc_product_page");
+      closeElement("[id*='sipay_osc_sipay_osc_cart");
+      renderExpressCheckoutConfig(this, "div[id*='sipay_osc_sipay_osc_minicart_sipay_osc_minicart_pwall']", "m2_minicart")
+    });
+    $("[id*='sipay_osc_sipay_osc_cart-head']").on("click", function() {
+      closeElement("[id*='sipay_osc_sipay_osc_minicart");
+      closeElement("[id*='sipay_osc_sipay_osc_product_page");
+      renderExpressCheckoutConfig(this, "div[id*='sipay_osc_sipay_osc_cart_sipay_osc_cart_pwall']", "m2_cart")
+    });
+
+    function closeElement(element) {
+      var toggle = $(element + "-head']");
+      if (toggle.hasClass("open")) {
+        toggle.removeClass("open");
+        toggle.closest(".section-config").removeClass("active");
+      }
+      var toggle = $(element + "-state").prop("value", "0");
+    }
+
+    function renderExpressCheckoutConfig(parent, container, profile) {
+      if ($("#app").length) {
+        $("#app").remove();
+      }
+      var ec_client = new PWall('<?php echo $block->getEnvironment() ?>', true);
+      var ec_backoffice = ec_client.backoffice();
+      ec_backoffice.backendUrl("<?php echo $block->getBackendUrl() ?>");
+      ec_backoffice.appendTo(container);
+      ec_backoffice.setProfile(profile);
+      ec_backoffice.setTags("express");
+      ec_backoffice.setIsExpressCheckout(true);
+      ec_backoffice.init();
+    }
+    $("input[id*='container_border_custom_color']").on("change paste keyup", function() {
+      var value = $(this).val();
+      if (!/^#([0-9A-F]{3}){1,2}$/i.test(value)) {
+        $(this).addClass("mage-error");
+        if (!$(this).parent().find(".custom-color-error").length) {
+          $(this).parent().append('<label generated="true" class="mage-error custom-color-error">' + "<?= __('Value is not valid, example #F1F1F1'); ?>" + '</label>');
+        }
+      } else {
+        $(this).removeClass("mage-error");
+        if ($(this).parent().find(".custom-color-error").length) {
+          $(this).parent().find(".custom-color-error").remove();
+        }
+      }
+    });
+  });
+</script>
+
+<div id="sipay-sipay-button" class="_hidden">
+  <?php echo $block->getButtonHtml() ?>
+</div>
+<div id="sipay-sipay-alert" class="message message-warning">
+  <?php echo __('You have made changes, please save before continue'); ?>
+</div>

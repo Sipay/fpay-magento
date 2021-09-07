@@ -1,0 +1,14 @@
+<table class="admin__table-secondary order-information-table sipay payment-info">
+  <tbody>
+    <?php if ($block->getFlattenedData()) : ?>
+      <?php foreach ($block->getFlattenedData() as $key => $value) : ?>
+        <?php if (!is_null($value) && $value != "") : ?>
+          <tr>
+            <th><?php echo __($key); ?></th>
+            <td class="source-type"><?php echo $value; ?></td>
+          </tr>
+        <?php endif; ?>
+      <?php endforeach; ?>
+    <?php endif; ?>
+  </tbody>
+</table>

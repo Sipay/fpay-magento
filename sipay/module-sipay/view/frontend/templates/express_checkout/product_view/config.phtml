@@ -1,0 +1,20 @@
+<?php if ($block->isEnabled("product_view")) : ?>
+  <script type="text/x-magento-init">
+    {
+          "<?php echo ($block->getContainerElement('product_view') != null) ? $block->getContainerElement('product_view') : "#sipay_express_checkout" ?>": {
+              "sipayExpressCheckout":{
+                  "enviroment":"<?php echo $block->getEnvironment() ?>",
+                  "backendUrl":"<?php echo $block->getBackendUrl() ?>",
+                  "profile": "m2_product_page",
+                  "quoteInfoUrl": "<?php echo $block->getQuoteInfoUrl() ?>",
+                  "cssUrl": "<?php echo $block->getCssUrl() ?>",
+                  "containerStyle": <?= $block->getContainerStyle('product_view') ?>,
+                  "positionConfig": <?= $block->getPositionConfig('product_view') ?>,
+                  "positionStyleConfig": <?= $block->getPositionStyleConfig('product_view') ?>,
+                  "storeLogoUrl": "<?php echo $block->getLogoSrc() ?>"
+              }
+            }
+      }        
+  </script>
+
+<?php endif ?>

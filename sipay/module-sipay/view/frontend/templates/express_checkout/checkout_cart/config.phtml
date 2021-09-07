@@ -1,0 +1,18 @@
+<?php if ($block->isEnabled("checkout_cart")) : ?>
+  <script type="text/x-magento-init">
+    {
+          "<?php echo ($block->getContainerElement('checkout_cart') != null) ? $block->getContainerElement('checkout_cart') : "#sipay_express_checkout" ?>": {
+              "sipayExpressCheckout":{
+                  "enviroment":"<?php echo $block->getEnvironment() ?>",
+                  "backendUrl":"<?php echo $block->getBackendUrl() ?>",
+                  "profile": "m2_cart",
+                  "quoteInfoUrl": "<?php echo $block->getQuoteInfoUrl() ?>",
+                  "cssUrl": "<?php echo $block->getCssUrl() ?>",
+                  "containerStyle": <?= $block->getContainerStyle('checkout_cart') ?>,
+                  "positionConfig": <?= $block->getPositionConfig('checkout_cart') ?>,
+                  "storeLogoUrl": "<?php echo $block->getLogoSrc() ?>"
+              }
+          }
+      }        
+  </script>
+<?php endif ?>

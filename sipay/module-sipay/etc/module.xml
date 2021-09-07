@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright (c) 2021 Sipay
+ * All rights reserved
+ */
+
+/**
+ * @category   Sipay
+ * @package    Sipay_Sipay
+ * @subpackage etc
+ * @author     Sipay Team
+ * @copyright  Copyright (c) 2021 Sipay (https://sipay.es/)
+ * @version    6.0.0
+ * @link       https://sipay.es/
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+    <module name="Sipay_Sipay" setup_version="6.0.0">
+      <sequence>
+          <module name="Magento_Sales"/>
+          <module name="Magento_Payment"/>
+          <module name="Magento_Checkout"/>
+          <module name="Magento_Directory" />
+          <module name="Magento_Config" />
+          <module name="Magento_Quote" />
+          <module name="Magento_Tax" />
+      </sequence>
+    </module>
+</config>

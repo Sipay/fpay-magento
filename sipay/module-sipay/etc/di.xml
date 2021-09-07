@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+  <!-- Tasks Grid -->
+  <virtualType name="Sipay\Sipay\Model\Transaction\ResourceModel\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+      <arguments>
+          <argument name="mainTable" xsi:type="string">sipay_sipay_transactions</argument>
+          <argument name="resourceModel" xsi:type="string">Sipay\Sipay\Model\Transaction\ResourceModel\Transaction</argument>
+      </arguments>
+  </virtualType>
+  <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+      <arguments>
+          <argument name="collections" xsi:type="array">
+              <item name="sipay_sipay_transaction_listing_data_source" xsi:type="string">Sipay\Sipay\Model\ResourceModel\Transaction\Grid\Collection</item>
+          </argument>
+      </arguments>
+  </type>
+  <preference for="Sipay\Sipay\Api\TransactionRepositoryInterface"  type="Sipay\Sipay\Model\TransactionRepository"/>
+  <preference for="Sipay\Sipay\Api\Data\TransactionInterface"       type="Sipay\Sipay\Model\Transaction"/>
+</config>

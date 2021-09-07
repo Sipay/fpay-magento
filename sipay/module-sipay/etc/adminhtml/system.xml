@@ -1,0 +1,363 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="payment" translate="label comment" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+            <group id="sipay_sipay" translate="label comment" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>FastPay</label>
+                <frontend_model>Sipay\Sipay\Block\Adminhtml\System\Config\Fieldset</frontend_model>
+                <fieldset_css>complex sipay-admin-config</fieldset_css>
+                <attribute type="displayIn">recommended_solutions</attribute>
+                <comment>Fastpay accepts multiple forms of payment (Visa, MasterCard, AmericanExpress, UnionPayInternational, JCB, Discover and Dinners), Amazon Pay, PayPal, Google Pay, Apple Pay, Bizum, payment by transfer and payment financed through the Sipay payment wall . All payment methods with a single integration that help merchants sell more!</comment>
+                <field id="active" translate="label comment" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="title" translate="label comment" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                     <label>Title</label>
+                </field>
+                <field id="payment_review_title" translate="label comment" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                     <label>Payment review page title</label>
+                </field>
+                <field id="environment" translate="label comment" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Environment</label>
+                    <source_model>Sipay\Sipay\Model\Config\Source\Environment</source_model>
+                    <can_be_empty>0</can_be_empty>
+                </field>
+                <field id="key" translate="label comment" type="text" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+                     <label>Key</label>
+                </field>
+                <field id="resource" translate="label comment" type="text" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1">
+                     <label>Resource</label>
+                </field>
+                <field id="secret" translate="label comment" type="text" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+                     <label>Secret</label>
+                </field>
+                <field id="allowspecific" translate="label comment" type="allowspecific" sortOrder="6" showInDefault="1" showInWebsite="1" showInStore="1">
+                  <label>Payment From Applicable Countries</label>
+                  <source_model>Magento\Payment\Model\Config\Source\Allspecificcountries</source_model>
+                </field>
+                <field id="specificcountry" translate="label comment" type="multiselect" sortOrder="7" showInDefault="1" showInWebsite="1" showInStore="1">
+                  <label>Payment From Specific Countries</label>
+                  <source_model>Magento\Directory\Model\Config\Source\Country</source_model>
+                </field>
+                <field id="debug" translate="label comment" type="select" sortOrder="8" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Debug</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="debug_path" translate="label comment" type="text" sortOrder="9" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Debug path file</label>
+                    <depends>
+                        <field id="debug">1</field>
+                    </depends>
+                </field>
+                <field id="extra_settings" translate="label comment" type="button" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <frontend_model>Sipay\Sipay\Model\Config\Source\ExtraSettings</frontend_model>
+                </field>
+                <group id="sipay_sipay_psd2" translate="label comment" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>PSD2</label>
+                    <field id="tra" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Enable TRA</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <field id="tra_value" translate="label comment" type="text" sortOrder="11" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>High amount up to</label>
+                        <depends>
+                            <field id="tra">1</field>
+                        </depends>
+                    </field>
+                    <field id="lwv" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Enable LWV</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <field id="lwv_value" translate="label comment" type="text" sortOrder="21" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Low amount up to</label>
+                        <depends>
+                            <field id="lwv">1</field>
+                        </depends>
+                    </field>
+                </group>
+            </group>
+            <!-- <group id="sipay_osc" translate="label comment" type="text" sortOrder="51" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Sipay: Payment Wall Express Checkout</label>
+                <frontend_model>Sipay\Sipay\Block\Adminhtml\System\Config\Fieldset</frontend_model>
+                <fieldset_css>complex sipay-admin-config</fieldset_css>
+                <attribute type="displayIn">recommended_solutions</attribute>
+                <comment>Select the sections of your store and the express payment methods than you want to enable</comment>
+                <field id="active" translate="label comment" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <group id="sipay_osc_product_page" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Product detail</label>
+                    <field id="active" translate="label comment" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Enabled</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <field id="container_active" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Enable container customization</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <field id="container_border_color" translate="label comment" type="radios" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Container border color</label>
+                        <depends>
+                            <field id="container_active">1</field>
+                        </depends>
+                        <source_model>Sipay\Sipay\Model\Config\Source\ContainerColor</source_model>
+                        <comment>Select color (border and text)</comment>
+                    </field>
+                    <field id="container_border_custom_color" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Container border  custom color</label>
+                        <depends>
+                            <field id="container_border_color">#</field>
+                            <field id="container_active">1</field>
+                        </depends>
+                        <comment>Ex. #F1F1F1</comment>
+                    </field>
+                    <field id="container_header_title" translate="label comment" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Container header title</label>
+                        <depends>
+                            <field id="container_active">1</field>
+                        </depends>
+                    </field>
+                    <field id="container_header_title_typo" translate="label comment tooltip" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Container header title typography</label>
+                        <tooltip>This option let you configure the font type of the header title.</tooltip>
+                        <source_model>Sipay\Sipay\Model\Config\Source\Typographies</source_model>
+                        <depends>
+                            <field id="container_active">1</field>
+                        </depends>
+                        <comment>If you want a custom font that is not included in the selector leave it in 'Without custom font' option and apply the font to #sipay_ec_container on your CSS stylesheet</comment>
+                    </field>
+                    <field id="container_descriptive_text" translate="label comment" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Container descriptive text</label>
+                        <depends>
+                            <field id="container_active">1</field>
+                        </depends>
+                    </field>
+                    <field id="container_descriptive_text_typo" translate="label comment tooltip" type="select" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Container descriptive text typography</label>
+                        <tooltip>This option let you configure the font type of the descriptive text</tooltip>
+                        <source_model>Sipay\Sipay\Model\Config\Source\Typographies</source_model>
+                        <depends>
+                            <field id="container_active">1</field>
+                        </depends>
+                        <comment>If you want a custom font that is not included in the selector leave it in 'Without custom font' option and apply the font to #sipay_ec_container on your CSS stylesheet</comment>
+                    </field>
+                    <field id="sipay_osc_product_page_pwall" translate="label comment" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <frontend_model>Sipay\Sipay\Block\Adminhtml\Form\Renderer\Config\PWallDiv</frontend_model>
+                        <depends>
+                            <field id="active">1</field>
+                        </depends>
+                    </field>
+                    <field id="position_mode" translate="label comment" type="select" sortOrder="100" showInDefault="90" showInWebsite="1" showInStore="1">
+                        <label>Position Mode</label>
+                        <source_model>Sipay\Sipay\Model\Config\Source\PositionMode</source_model>
+                    </field>
+                    <field id="position_selector" translate="label comment tooltip" type="text" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Position DOM selector</label>
+                        <depends>
+                            <field id="position_mode">1</field>
+                        </depends>
+                        <tooltip>Select the reference object in which you want to place the widget for a more custom configuration</tooltip>
+                        <comment>Ex. #example</comment>
+                    </field>
+                    <field id="position_insertion" translate="label comment" type="radios" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Position Insertion</label>
+                        <depends>
+                            <field id="position_mode">1</field>
+                        </depends>
+                        <comment>Select where do you wanna put the widget relative to the reference object selected in the previous field</comment>
+                        <source_model>Sipay\Sipay\Model\Config\Source\Insertion</source_model>
+                    </field>
+                    <field id="position_style" translate="label comment" type="textarea" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>DOM CSS custom style</label>
+                        <depends>
+                            <field id="position_mode">1</field>
+                        </depends>
+                        <comment>Ex. {"background-color":"red","color":"white"}</comment>
+                    </field>
+                </group>
+                <group id="sipay_osc_minicart" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Cart</label>
+                    <field id="active" translate="label comment" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Enabled</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <field id="container_active" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Enable container customization</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <field id="container_border_color" translate="label comment" type="radios" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Container border color</label>
+                        <depends>
+                            <field id="container_active">1</field>
+                        </depends>
+                        <source_model>Sipay\Sipay\Model\Config\Source\ContainerColor</source_model>
+                        <comment>Select color (border and text)</comment>
+                    </field>
+                    <field id="container_border_custom_color" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Container border  custom color</label>
+                        <depends>
+                            <field id="container_border_color">#</field>
+                            <field id="container_active">1</field>
+                        </depends>
+                        <comment>Ex. #F1F1F1</comment>
+                    </field>
+                    <field id="container_header_title" translate="label comment" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Container header title</label>
+                        <depends>
+                            <field id="container_active">1</field>
+                        </depends>
+                    </field>
+                    <field id="container_header_title_typo" translate="label comment tooltip" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Container header title typography</label>
+                        <tooltip>This option let you configure the font type of the header title.</tooltip>
+                        <source_model>Sipay\Sipay\Model\Config\Source\Typographies</source_model>
+                        <depends>
+                            <field id="container_active">1</field>
+                        </depends>
+                        <comment>If you want a custom font that is not included in the selector leave it in 'Without custom font' option and apply the font to #sipay_ec_container on your CSS stylesheet</comment>
+                    </field>
+                    <field id="container_descriptive_text" translate="label comment" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Container descriptive text</label>
+                        <depends>
+                            <field id="container_active">1</field>
+                        </depends>
+                    </field>
+                    <field id="container_descriptive_text_typo" translate="label comment tooltip" type="select" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Container descriptive text typography</label>
+                        <tooltip>This option let you configure the font type of the descriptive text</tooltip>
+                        <source_model>Sipay\Sipay\Model\Config\Source\Typographies</source_model>
+                        <depends>
+                            <field id="container_active">1</field>
+                        </depends>
+                        <comment>If you want a custom font that is not included in the selector leave it in 'Without custom font' option and apply the font to #sipay_ec_container on your CSS stylesheet</comment>
+                    </field>
+                    <field id="sipay_osc_minicart_pwall" translate="label comment" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <frontend_model>Sipay\Sipay\Block\Adminhtml\Form\Renderer\Config\PWallDiv</frontend_model>
+                        <depends>
+                            <field id="active">1</field>
+                        </depends>
+                    </field>
+                    <field id="position_mode" translate="label comment" type="select" sortOrder="100" showInDefault="90" showInWebsite="1" showInStore="1">
+                        <label>Position Mode</label>
+                        <source_model>Sipay\Sipay\Model\Config\Source\PositionMode</source_model>
+                    </field>
+                    <field id="position_selector" translate="label comment tooltip" type="text" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Position DOM selector</label>
+                        <depends>
+                            <field id="position_mode">1</field>
+                        </depends>
+                        <tooltip>Select the reference object in which you want to place the widget for a more custom configuration</tooltip>
+                        <comment>Ex. #example</comment>
+                    </field>
+                    <field id="position_insertion" translate="label comment" type="radios" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Position Insertion</label>
+                        <depends>
+                            <field id="position_mode">1</field>
+                        </depends>
+                        <comment>Select where do you wanna put the widget relative to the reference object selected in the previous field</comment>
+                        <source_model>Sipay\Sipay\Model\Config\Source\Insertion</source_model>
+                    </field>
+                    <field id="position_style" translate="label comment" type="textarea" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>DOM CSS custom style</label>
+                        <depends>
+                            <field id="position_mode">1</field>
+                        </depends>
+                        <comment>Ex. {"background-color":"red","color":"white"}</comment>
+                    </field>
+                </group>
+                <group id="sipay_osc_cart" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Order summary</label>
+                    <field id="active" translate="label comment" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Enabled</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <field id="container_active" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Enable container customization</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+                    <field id="container_border_color" translate="label comment" type="radios" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Container border color</label>
+                        <depends>
+                            <field id="container_active">1</field>
+                        </depends>
+                        <source_model>Sipay\Sipay\Model\Config\Source\ContainerColor</source_model>
+                        <comment>Select color (border and text)</comment>
+                    </field>
+                    <field id="container_border_custom_color" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Container border  custom color</label>
+                        <depends>
+                            <field id="container_border_color">#</field>
+                            <field id="container_active">1</field>
+                        </depends>
+                        <comment>Ex. #F1F1F1</comment>
+                    </field>
+                    <field id="container_header_title" translate="label comment" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Container header title</label>
+                        <depends>
+                            <field id="container_active">1</field>
+                        </depends>
+                    </field>
+                    <field id="container_header_title_typo" translate="label comment tooltip" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Container header title typography</label>
+                        <tooltip>This option let you configure the font type of the header title.</tooltip>
+                        <source_model>Sipay\Sipay\Model\Config\Source\Typographies</source_model>
+                        <depends>
+                            <field id="container_active">1</field>
+                        </depends>
+                        <comment>If you want a custom font that is not included in the selector leave it in 'Without custom font' option and apply the font to #sipay_ec_container on your CSS stylesheet</comment>
+                    </field>
+                    <field id="container_descriptive_text" translate="label comment" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Container descriptive text</label>
+                        <depends>
+                            <field id="container_active">1</field>
+                        </depends>
+                    </field>
+                    <field id="container_descriptive_text_typo" translate="label comment tooltip" type="select" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Container descriptive text typography</label>
+                        <tooltip>This option let you configure the font type of the descriptive text</tooltip>
+                        <source_model>Sipay\Sipay\Model\Config\Source\Typographies</source_model>
+                        <depends>
+                            <field id="container_active">1</field>
+                        </depends>
+                        <comment>If you want a custom font that is not included in the selector leave it in 'Without custom font' option and apply the font to #sipay_ec_container on your CSS stylesheet</comment>
+                    </field>
+                    <field id="sipay_osc_cart_pwall" translate="label comment" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <frontend_model>Sipay\Sipay\Block\Adminhtml\Form\Renderer\Config\PWallDiv</frontend_model>
+                        <depends>
+                            <field id="active">1</field>
+                        </depends>
+                    </field>
+                    <field id="position_mode" translate="label comment" type="select" sortOrder="100" showInDefault="90" showInWebsite="1" showInStore="1">
+                        <label>Position Mode</label>
+                        <source_model>Sipay\Sipay\Model\Config\Source\PositionMode</source_model>
+                    </field>
+                    <field id="position_selector" translate="label comment tooltip" type="text" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Position DOM selector</label>
+                        <depends>
+                            <field id="position_mode">1</field>
+                        </depends>
+                        <tooltip>Select the reference object in which you want to place the widget for a more custom configuration</tooltip>
+                        <comment>Ex. #example</comment>
+                    </field>
+                    <field id="position_insertion" translate="label comment" type="radios" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Position Insertion</label>
+                        <depends>
+                            <field id="position_mode">1</field>
+                        </depends>
+                        <comment>Select where do you wanna put the widget relative to the reference object selected in the previous field</comment>
+                        <source_model>Sipay\Sipay\Model\Config\Source\Insertion</source_model>
+                    </field>
+                    <field id="position_style" translate="label comment" type="textarea" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>DOM CSS custom style</label>
+                        <depends>
+                            <field id="position_mode">1</field>
+                        </depends>
+                        <comment>Ex. {"background-color":"red","color":"white"}</comment>
+                    </field>
+                </group>
+            </group> -->
+        </section>
+    </system>
+</config>

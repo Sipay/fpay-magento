@@ -1,0 +1,20 @@
+{
+  "name": "sipay/module-sipay",
+  "description": "This module allow Sipay payments",
+  "require": {
+    "php": "~5.5.0|~5.6.0|~7.0.0|~7.1.0|~7.2|~7.3",
+    "sarhan/php-flatten": "~3.0.0",
+    "sipay/pwall-sdk":"2.0.0"
+  },
+  "type": "magento2-module",
+  "version": "6.0.0",
+  "license": "proprietary",
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Sipay\\Sipay\\": ""
+    }
+  }
+}

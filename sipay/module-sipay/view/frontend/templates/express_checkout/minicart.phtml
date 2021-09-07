@@ -1,0 +1,20 @@
+<?php if ($block->isEnabled("minicart")) : ?>
+  <div id="sipay_express_checkout_minicart"></div>
+  <script type="text/x-magento-init">
+    {
+      "<?php echo ($block->getContainerElement('minicart') != null) ? $block->getContainerElement('minicart') : "#sipay_express_checkout_minicart" ?>": {
+          "sipayExpressCheckout":{
+              "enviroment":"<?php echo $block->getEnvironment() ?>",
+              "backendUrl":"<?php echo $block->getBackendUrl() ?>",
+              "profile": "m2_minicart",
+              "quoteInfoUrl": "<?php echo $block->getQuoteInfoUrl() ?>",
+              "cssUrl": "<?php echo $block->getCssUrl() ?>",
+              "containerStyle": <?= $block->getContainerStyle('minicart') ?>,
+              "positionConfig": <?= $block->getPositionConfig('minicart') ?>,
+              "positionStyleConfig": <?= $block->getPositionStyleConfig('minicart') ?>,
+              "storeLogoUrl": "<?php echo $block->getLogoSrc() ?>"
+        }
+      }
+    }        
+  </script>
+<?php endif ?>

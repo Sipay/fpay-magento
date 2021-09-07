@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block class="Sipay\Sipay\Block\ExpressCheckout\Button" name="cart.sipay_express_checkout.config" template="Sipay_Sipay::express_checkout/checkout_cart/config.phtml" before="-" ifconfig="payment/sipay_osc/active" />
+        </referenceContainer>
+        
+        <referenceContainer name="checkout.cart.methods">
+            <block class="Sipay\Sipay\Block\ExpressCheckout\Button" name="sipay_expresscheckout.cart" after="checkout.cart.methods.onepage.bottom" template="Sipay_Sipay::express_checkout/checkout_cart/container.phtml">
+                <arguments>
+                    <argument name="section" xsi:type="string">checkout</argument>
+                    <argument name="position" xsi:type="number">1</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

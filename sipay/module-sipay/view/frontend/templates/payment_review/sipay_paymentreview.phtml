@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="<?php echo $block->getCssUrl() ?>">
+<script type="text/javascript" src="<?php echo $block->getSdkUrl() ?>"></script>
+<script src="<?php echo $block->getSdkJsUrl() ?>"></script>
+<div id="sipay_app_review"></div>
+<script type="text/x-magento-init">
+    {
+          "#sipay_app_review": {
+              "sipayPaymentReview":{
+                  "enviroment":"<?php echo $block->getEnvironment() ?>",
+                  "backendUrl":"<?php echo $block->getBackendUrl() ?>",
+                  "currency": "<?php echo $block->getCurrencyCodeFromQuote() ?>",
+                  "amount": <?php echo $block->getAmountFromQuote() ?>,
+                  "customer_id": <?php echo $block->getCustomerId() ?>,
+                  "error_url": "<?php echo $block->getErrorRedirectUrl() ?>"
+              }
+          }
+      }        
+</script>

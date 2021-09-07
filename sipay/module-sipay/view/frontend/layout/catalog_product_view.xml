@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="head.components">
+            <block class="Sipay\Sipay\Block\ExpressCheckout\Button" name="product.info.sipay_express_checkout.config" template="Sipay_Sipay::express_checkout/product_view/config.phtml" before="-" ifconfig="payment/sipay_osc/active" />
+        </referenceBlock>
+        
+        <referenceBlock name="product.info.addtocart">
+            <block class="Sipay\Sipay\Block\ExpressCheckout\Button" name="product.info.sipay_express_checkout" template="Sipay_Sipay::express_checkout/product_view/container.phtml" before="-" ifconfig="payment/sipay_osc/active" />
+        </referenceBlock>
+
+        <referenceBlock name="product.info.addtocart.additional">
+            <block class="Sipay\Sipay\Block\ExpressCheckout\Button" name="product.configurable.info.sipay_express_checkout" template="Sipay_Sipay::express_checkout/product_view/container.phtml" before="-" ifconfig="payment/sipay_osc/active" />
+        </referenceBlock>
+    </body>
+</page>
+
