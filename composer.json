@@ -1,0 +1,20 @@
+{
+  "name": "ezenit/module-waiap",
+  "description": "This module allow Waiap payments",
+  "require": {
+    "php": "~5.5.0|~5.6.0|~7.0.0|~7.1.0|~7.2|~7.3",
+    "sarhan/php-flatten": "~3.0.0",
+    "sipay/pwall-sdk":"*"
+  },
+  "type": "magento2-module",
+  "version": "4.0.6",
+  "license": "proprietary",
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Ezenit\\Waiap\\": ""
+    }
+  }
+}
